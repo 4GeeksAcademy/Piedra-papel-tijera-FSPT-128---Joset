@@ -5,20 +5,27 @@ const rules = {
   tijeras: ["papel", "lagarto"],
   lagarto: ["spock", "papel"],
   spock: ["tijeras", "piedra"]
-}
+};
 
 const jugar = (userChoice) => {
   const sheldonChoice = choice[Math.floor(Math.random() * choice.length)];
 
-  console.log(`Tú elegiste: ${userChoice}`);
-  console.log(`Sheldon eligió: ${sheldonChoice}`);
-
   if (userChoice === sheldonChoice) {
-    console.log("¡Empate!, prueba otra vez.");
-  } else if (rules[userChoice].includes(sheldonChoice)) {
-    console.log("¡Muy bien jugado, eres el campeón!");
-  } else {
-    console.log("¡perdiste contra Sheldon!");
+    return `Tú elegiste: ${userChoice}, y Sheldon eligió: ${sheldonChoice}. ¡Empate!, prueba otra vez.`;
   }
-}
+  if (rules[userChoice].includes(sheldonChoice)) {
+    return `Tú elegiste: ${userChoice}, y Sheldon eligió: ${sheldonChoice}. ¡Muy bien jugado, eres el campeón!`;
+  }
+  return `Tú elegiste: ${userChoice}, y Sheldon eligió: ${sheldonChoice}. ¡Perdiste contra Sheldon!`;
+};
+
+const mostrarResultado = (userChoice) => {
+  const contenedorMensaje = document.getElementById('resultado');
+  const mensaje = jugar(userChoice);
+  contenedorMensaje.textContent = mensaje;
+};
+
+
+
+
 
